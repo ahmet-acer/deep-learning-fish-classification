@@ -1,0 +1,5 @@
+*.keras
+*.h5
+Fish_Dataset/
+__pycache__/
+.ipynb_checkpoints/
