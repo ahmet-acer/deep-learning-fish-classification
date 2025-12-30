@@ -26,3 +26,8 @@ Her sınıftan görüntüler klasör yapısına göre etiketlenmiştir.
 - F1-score
 - Confusion Matrix
 - Grad-CAM görselleştirmeleri
+
+## Eğitilmiş Model
+Eğitilmiş model dosyası GitHub'ın dosya boyutu sınırını aştığı için buraya yüklenememiştir.
+
+Modeli şu bağlantıdan indirebilirsiniz:(https://drive.google.com/file/d/1Y18Iqr5mNig2giHBdg6zJekNbqrDadTG/view?usp=drive_link)
