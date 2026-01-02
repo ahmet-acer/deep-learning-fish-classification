@@ -152,8 +152,14 @@ The project includes:
 ---
 ## 🧠 Trained Models
 
-- **No-Augmentation Model:** `models/no_aug/best_model.keras` (input: 224x224, MobileNetV2 preprocess_input required)
-- **Augmentation Model:** `models/aug/best_model.keras` (input: 160x160, preprocessing handled inside the model)
+The trained models exceed GitHub's file size limit and are therefore hosted externally on Google Drive.
+
+- **No-Augmentation Model:** MobileNetV2, input size 224×224  
+  🔗 [Download from Google Drive]((https://drive.google.com/drive/folders/1sP5-0nsiGLENyXN_cGaunnadIeFlXP_y?usp=drive_link))
+
+- **Augmentation Model:** MobileNetV2 with data augmentation, input size 160×160  
+  🔗 [Download from Google Drive]((https://drive.google.com/drive/folders/1Eep8fYKBKcw0_6GP0hzI3WBcnRtEuhzU?usp=drive_link))
+
 
 
 ## 📁 Project Structure
