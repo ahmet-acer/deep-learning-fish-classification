@@ -150,6 +150,11 @@ The project includes:
 - Matplotlib
 
 ---
+## 🧠 Trained Models
+
+- **No-Augmentation Model:** `models/no_aug/best_model.keras` (input: 224x224, MobileNetV2 preprocess_input required)
+- **Augmentation Model:** `models/aug/best_model.keras` (input: 160x160, preprocessing handled inside the model)
+
 
 ## 📁 Project Structure
 
