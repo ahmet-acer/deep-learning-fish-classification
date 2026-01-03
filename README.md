@@ -1,3 +1,128 @@
+# 🐟 Derin Öğrenme ile Balık Türlerinin Sınıflandırılması
+
+Bu proje, **MobileNetV2** mimarisini kullanarak derin öğrenme tabanlı bir balık sınıflandırma sistemi sunmaktadır. Çalışmanın temel amacı, 9 farklı balık türünü görüntüler üzerinden sınıflandırmak ve **veri artırma (data augmentation)** tekniklerinin model performansı üzerindeki etkisini analiz etmektir.
+
+Proje kapsamında; veri artırma uygulanan (**aug**) ve uygulanmayan (**no_aug**) olmak üzere iki farklı eğitim stratejisi yürütülmüş, modellerin başarımları karşılaştırmalı olarak değerlendirilmiştir.
+
+---
+
+## 📂 Veri Seti Özellikleri
+
+* **Toplam Görüntü Sayısı:** ~9.000
+* **Sınıf Sayısı:** 9
+* **Sınıf Başına Dağılım:** Her sınıf yaklaşık 1.000 görüntü içermektedir.
+* **Veri Seti Bölümlemesi:**
+* Eğitim: %64
+* Doğrulama (Validation): %16
+* Test: %20 (≈1.800 görüntü)
+
+
+* **Ön İşleme:** Veri sızıntısını (data leakage) önlemek amacıyla, zemin gerçekliği (Ground-truth - GT) görüntüleri ön işleme aşamasında veri setinden çıkarılmıştır.
+
+---
+
+## 🐠 Sınıflandırılan Balık Türleri
+
+Veri seti aşağıdaki balık türlerini içermektedir:
+
+* Çaça (Black Sea Sprat)
+* Çipura (Gilt-Head Bream)
+* İstavrit (Horse Mackerel)
+* Tekir (Red Mullet)
+* Mercan (Red Sea Bream)
+* Levrek (Sea Bass)
+* Karides (Shrimp)
+* Barbun (Striped Red Mullet)
+* Alabalık (Trout)
+
+---
+
+## ⚙️ Model Mimarisi
+
+* **Ana Omurga (Backbone):** MobileNetV2
+* **Ön Eğitim:** ImageNet ağırlıkları kullanılmıştır.
+* **Giriş Boyutları:**
+* Veri Artırmasız Model: 224 × 224
+* Veri Artırmalı Model: 160 × 160
+
+* **Optimizasyon Algoritması:** Adam
+* **Kayıp Fonksiyonu:** Kategorik Çapraz Entropi (Categorical Cross-Entropy)
+* **Çıkış Katmanı:** Softmax (9 sınıf)
+* **Veri Artırma:** Model mimarisine entegre edilmiş rotasyon, yakınlaştırma, çevirme ve kaydırma işlemleri uygulanmıştır.
+
+---
+
+## 🚀 Eğitim Stratejisi
+
+İki ayrı model eğitilerek performans analizi yapılmıştır:
+
+1. **Veri Artırmasız (Baseline) Model:** Yalnızca orijinal görüntülerle eğitilmiştir. Temiz test verileri üzerinde çok yüksek doğruluk değerlerine ulaşmaktadır.
+2. **Veri Artırmalı Model:** Veri artırma teknikleriyle eğitilmiştir. Modelin genelleme yeteneği ve gürültülü verilere karşı dayanıklılığı artırılmıştır.
+
+---
+
+## 📊 Değerlendirme ve Bulgular
+
+Modeller, eğitim sürecinde hiç görülmemiş olan **test veri seti** ile değerlendirilmiştir. Analizlerde aşağıdaki metrikler baz alınmıştır:
+
+* Doğruluk (Accuracy)
+* Kesinlik (Precision)
+* Duyarlılık (Recall)
+* F1-Skoru
+* Karmaşıklık Matrisi (Raw & Normalized Confusion Matrix)
+
+### Temel Sonuçlar:
+
+* **Veri Artırmasız Model:** ~%100 test doğruluğu.
+* **Veri Artırmalı Model:** ~%92 test doğruluğu.
+* Elde edilen fark, veri artırmanın modelin genelleme kapasitesi üzerindeki doğrudan etkisini ortaya koymaktadır.
+
+---
+
+## 🔍 Veri Güvenilirliği (Data Leakage Check)
+
+Deneysel doğruluğu sağlamak adına:
+
+* Eğitim, doğrulama ve test setleri kesin çizgilerle ayrılmıştır.
+* Dosya düzeyinde yapılan çakışma kontrolleriyle veri sızıntısı olmadığı teyit edilmiştir.
+* Eğitim ve test aşamaları arasında ön işleme tutarlılığı korunmuştur.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+* Python
+* TensorFlow / Keras
+* NumPy
+* Pandas
+* Scikit-learn
+* Matplotlib
+
+---
+ ## 🧠 Eğitilmiş Modeller
+Eğitilen modellerin dosya boyutları GitHub'ın dosya boyutu sınırını aştığı için, modeller harici olarak Google Drive üzerinde  barındırılmaktadır.
+---
+- **No-Augmentation Model:** MobileNetV2, input size 224×224  
+  🔗 [Download from Google Drive][(https://drive.google.com/drive/folders/1sP5-0nsiGLENyXN_cGaunnadIeFlXP_y?usp=drive_link)]
+
+- **Augmentation Model:** MobileNetV2 with data augmentation, input size 160×160  
+  🔗 [Download from Google Drive][(https://drive.google.com/drive/folders/1Eep8fYKBKcw0_6GP0hzI3WBcnRtEuhzU?usp=drive_link)]
+
+---
+
+## 📁 Proje Yapısı
+
+├── outputs/
+│   ├── <run_id>/
+│   │   ├── no_aug/
+│   │   │   ├── model/
+│   │   ├── aug/
+│   │   │   ├── model/
+├── Fish_Dataset/
+├── train.ipynb
+├── test.ipynb
+└── README.md
+------------------------------------------------------------------------------------------------------------------------------
 # 🐟 Fish Classification with Deep Learning
 
 This project implements a deep learning–based fish classification system using **MobileNetV2**.
