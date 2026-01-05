@@ -12,12 +12,14 @@ Proje kapsamında; veri artırma uygulanan (**aug**) ve uygulanmayan (**no_aug**
 * **Sınıf Sayısı:** 9
 * **Sınıf Başına Dağılım:** Her sınıf yaklaşık 1.000 görüntü içermektedir.
 * **Veri Seti Bölümlemesi:**
-* Eğitim: %64
-* Doğrulama (Validation): %16
-* Test: %20 (≈1.800 görüntü)
+* **Eğitim:** %64
+* **Doğrulama (Validation):** %16
+* **Test:** %20 (≈1.800 görüntü)
 
 
 * **Ön İşleme:** Veri sızıntısını (data leakage) önlemek amacıyla, zemin gerçekliği (Ground-truth - GT) görüntüleri ön işleme aşamasında veri setinden çıkarılmıştır.
+  
+**Not:** Model, eğitim sürecinde yalnızca RGB (3 kanallı) görüntüler ile eğitilmiştir. Bu nedenle test aşamasında kullanılan dış kaynaklı görüntülerin de RGB formatında olması gerekmektedir. Özellikle .webp formatlı, alpha kanal içeren (RGBA) veya farklı renk profiline sahip (CMYK vb.) görüntüler, ön dönüştürme yapılmadan kullanıldığında hatalı veya düşük güvenli tahminlere yol açabilmektedir. Bu durumun önüne geçmek için test edilecek görüntülerin RGB formatına dönüştürülmesi önerilmektedir.
 
 ---
 
